@@ -13,7 +13,6 @@ class Piece:
         self.x = 0 
         self.y = 0
         self.calc_pos()
-        #print(self.color)
     def calc_pos(self):
         self.x = SQUARE_SIZE * self.col + SQUARE_SIZE // 2
         self.y = SQUARE_SIZE * self.row + SQUARE_SIZE // 2

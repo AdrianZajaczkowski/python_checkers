@@ -1,12 +1,12 @@
 import pygame
-from .constants import COLORS, ROWS, COLS, SQUARE_SIZE , SQUARE_SIZE
+from .constants import COLORS, ROWS, COLS, SQUARE_SIZE
 from .piece import Piece
 
 class Board():
 
     def __init__(self):
         self.board = []
-        self.red_left = self.white_left = 12
+        self.black_left = self.white_left = 12
         self.black_kings = self.white_kings = 0
         self.create_board() # automaticly call method to create board
     
@@ -46,7 +46,7 @@ class Board():
         self.board[piece.row][piece.col], self.board[row][col] = self.board[row][col], self.board[piece.row][piece.col] # swap pos values of pieces to make it move
         piece.move(row,col)
 
-        if row == ROWS or row == 0:
+        if row == ROWS - 1 or row == 0:
             piece.make_king()
             if piece.color == 'WHITE':
                 self.white_kings += 1
@@ -55,7 +55,6 @@ class Board():
 
 
     def get_piece(self,row,col):
-        print(self.board[row][col])
         return self.board[row][col]
     
     def get_valid_moves(self,piece):
@@ -69,8 +68,24 @@ class Board():
         if piece.color == COLORS['WHITE'] or piece.king:
             moves.update(self._traverse_left(row +1, min(row +3,ROWS), 1,piece.color, left))
             moves.update(self._traverse_right(row +1, min(row +3,ROWS), 1,piece.color, right))
-        print(moves)
+     
         return moves
+
+    def remove(self,pieces):
+        for piece in pieces:
+            self.board[piece.row][piece.col] = 0
+            if piece !=0:
+                if piece.color == COLORS['BLACK']:
+                    self.black_left -= 1
+                else:
+                    self.white_left -=1
+    def winner(self):
+        if self.black_left <= 0:
+            return COLORS['WHITE']
+        elif self.white_left <=0:
+            return COLORS['BLACK']
+
+        return None
 
     def _traverse_left(self,start,stop,step,color,left,skipped =[]): # step -> can go up diagonal or down diagonal
         moves = {}
