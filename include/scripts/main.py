@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import pygame
+import pygame,time
 from checkers.constants import WIDTH, HEIGHT, SQUARE_SIZE, COLORS
 from checkers.board import Board 
 from checkers.game import Game
@@ -20,6 +20,10 @@ def main():
     
     while run:
         clock.tick(FPS)
+        if game.winner() != None:
+            print(game.winner())
+            time.sleep(5)
+            run = False
 
         for event in pygame.event.get(): # check what event is arledy 
             if event.type == pygame.QUIT: # event for quit loop while you press 'x'
