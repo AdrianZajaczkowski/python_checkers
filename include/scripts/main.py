@@ -5,7 +5,7 @@ from checkers.board import Board
 FPS = 60
 WIN = pygame.display.set_mode((WIDTH,HEIGHT))
 pygame.display.set_caption('Checkers')
-###
+
 def main():
     run = True
     clock = pygame.time.Clock()
