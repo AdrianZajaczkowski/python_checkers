@@ -19,7 +19,7 @@ COLORS = {
     'BLACK': (0,0,0),
     'BLUE' : (0,0,255),
     'GREY' : (58,58,58), 
-    'BLUE' : (0,64,255)
+    'L_GREEN' : (127,255,127)
 }
 x = int(SQUARE_SIZE / 4 )
 y = int(SQUARE_SIZE / 4 )
