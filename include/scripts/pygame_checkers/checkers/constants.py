@@ -24,5 +24,5 @@ COLORS = {
 x = int(SQUARE_SIZE / 4 )
 y = int(SQUARE_SIZE / 4 )
 
-CROWN = pygame.transform.scale(pygame.image.load('include/scripts/assets/crown.png'),(x,y))
+CROWN = pygame.transform.scale(pygame.image.load('python_checkers/include/scripts/assets/crown.png'),(x,y))
 
